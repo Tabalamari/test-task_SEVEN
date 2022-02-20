@@ -1,15 +1,16 @@
-
-<input type="file" (change)="fileChangeEvent($event)" />
-
-<image-cropper
-    [imageChangedEvent]="imageChangedEvent"
-    [maintainAspectRatio]="true"
-    [aspectRatio]="1 / 1"
-    format="png"
-    (imageCropped)="imageCropped($event)"
-    (imageLoaded)="imageLoaded(croppedImage)"
-    (cropperReady)="cropperReady()"
-    (loadImageFailed)="loadImageFailed()"
-></image-cropper>
-
-<img [src]="croppedImage" />
+<div class="container">
+    <h2 class="title">Here you can crop your image</h2>
+    <img src="../assets/img/main-img.gif" width="250px" />
+    <div>
+        <input type="file" (change)="fileChangeEvent($event)" />
+    </div>
+    <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="1 / 1"
+        format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded(croppedImage)"
+        (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()"></image-cropper>
+    <div>
+        <img [src]="croppedImage" class="cropped-image" />
+        <div>
+            <button class="to-localstorage" (click)="imageToLocalstorage()">My cropped image to localstorage</button>
+        </div>
+    </div>
+</div>
