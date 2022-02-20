@@ -1,4 +1,3 @@
-import { ReadVarExpr } from '@angular/compiler';
 import { Component } from '@angular/core';
 import { ImageCroppedEvent, LoadedImage } from 'ngx-image-cropper';
 
@@ -13,31 +12,14 @@ export class AppComponent {
 
     fileChangeEvent(event: any): void {
         this.imageChangedEvent = event;
+
+        document.getElementById("to-localstorage-button")!.style.display = "block";
     }
     imageCropped(event: ImageCroppedEvent) {
         this.croppedImage = event.base64;
     }
-    imageToLocalstorage(){
-        // let image = {
-        //     image: this.croppedImage.result
-        // }
+    imageToLocalstorage() {
         console.log(this.croppedImage)
         localStorage.setItem('image', this.croppedImage)
     }
-
-
-
-
-    imageLoaded(image: LoadedImage) {
-        // show cropper
-    }
-    cropperReady() {
-        // cropper ready
-    }
-    loadImageFailed() {
-        // show message
-    }
-
-
-
 }
